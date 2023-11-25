@@ -17,7 +17,9 @@ const newTableFromQuery = async () => {
         "id" SERIAL PRIMARY KEY,
         "title" VARCHAR(100) NOT NULL,
         "author" VARCHAR(40) NOT NULL,
-        "publication_year" VARCHAR(10) NOT NULL
+        "publication_year" VARCHAR(10) NOT NULL,
+        "language" VARCHAR(20) NOT NULL,
+        "num_pages" INTEGER NOT NULL
       );
     `;
      await client.query(query);

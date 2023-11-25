@@ -42,12 +42,12 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { title, author, publication_year } = req.body;
+    const { title, author, publication_year, language, num_pages } = req.body;
 
     await conn.query(
-      `INSERT INTO books (title, author, publication_year)
-          VALUES ($1, $2, $3)`,
-      [title, author, publication_year]
+      `INSERT INTO books (title, author, publication_year,language,num_pages)
+          VALUES ($1, $2, $3,$4,$5)`,
+      [title, author, publication_year, language, num_pages]
     );
 
     res.status(200).json({ message: "Successfully added" });
@@ -59,11 +59,11 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { title, author, publication_year } = req.body;
+    const { title, author, publication_year, language, num_pages } = req.body;
 
     await conn.query(
-      `UPDATE books SET title = $1, author=$2, publication_year=$3 WHERE id = $4`,
-      [title, author, publication_year, req.params.id]
+      `UPDATE books SET title = $1, author=$2, publication_year=$3,language=$4,num_pages=$5 WHERE id = $6`,
+      [title, author, publication_year, language, num_pages, req.params.id]
     );
 
     res.status(200).json({ message: "Successfully updated" });
@@ -87,5 +87,3 @@ router.delete("/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
-
-
