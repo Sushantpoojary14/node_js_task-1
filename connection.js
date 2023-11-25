@@ -24,7 +24,7 @@ const newTableFromQuery = async () => {
 };
 
 newTableFromQuery()
-  .then(() => console.log('New table created!'))
+  .then(() => console.log('Success'))
   .catch(error => console.log("Connection failed: " + error));
 
 module.exports = client;

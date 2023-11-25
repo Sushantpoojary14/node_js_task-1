@@ -75,8 +75,6 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
- 
-
     await conn.query(`DELETE FROM books WHERE id = $1`, [req.params.id]);
 
     res.status(200).json({ message: "Successfully deleted" });
@@ -90,4 +88,4 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
 
-// console.log(`App running on port ${port}.`)
+
