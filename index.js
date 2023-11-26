@@ -12,11 +12,6 @@ app.use(
 
 const router = express.Router();
 app.use("/book", router);
-app.get("/", async (request, response) => {
-  const get = await conn.query("select * from books");
-  console.log(get.rows);
-  response.json({ info: get.rows });
-});
 
 router.get("/", async (req, res) => {
   try {
